@@ -27,12 +27,10 @@ public class AppServer extends ExternalResource {
         context = new InitialContext(props);
     }
 
-    @SuppressWarnings({"unchecked"})
     public <T> T lookup(String moduleName, Class<?> impl, Class<T> intf) {
         return lookup("", moduleName, impl, intf);
     }
 
-    @SuppressWarnings({"unchecked"})
     public <T> T lookup(String appName, String moduleName, Class<?> impl, Class<T> intf) {
         String name = "ejb:" + appName + "/" + moduleName + "//" + impl.getSimpleName() + "!" + intf.getName();
         return lookup(name);
